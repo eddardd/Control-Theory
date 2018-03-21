@@ -18,5 +18,6 @@ Lineaires.
 
 ## Lectures
 
-* 07/03/2018 - Mass Spring tutorial
-* 14/03/2018 - Frequency domain tutorial
+* 07/03/2018 - Mass Spring tutorial, (simulations + lectures notes)
+* 14/03/2018 - Frequency domain tutorial, (simulations + lecture notes)
+* 21/03/2018 - Frequency analysis of electric circuits, (only lecture notes)
