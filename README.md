@@ -8,9 +8,11 @@ atualmente, em três pastas:
 
 [1] Controle Introdutório, referente à minha atividade como monitor
 da disciplina ministrada pela Prof. Michela Mulas na Universidade
-Federal do Ceará,
+Federal do Ceará.
+
 [2] Controle Ótimo, referente às minhas notas de estudos e códigos
 sobre o assunto,
+
 [3] Controle Avançado, referente aos meus códigos e relatórios du
 rante a referida disciplina, ministrada também pela Prof. Michela
 Mulas na UFC.
@@ -23,9 +25,11 @@ folders:
 
 [1] Introductory Control, refering to my activity as teaching assis
 tant in the discipline taught by Prof. Michela Mulas, at Federal
-University of Ceará
+University of Ceará.
+
 [2] Optimal Control, refering to my study notes and codes about the
 subject.
+
 [3] Advanced Control, refering to my codes and reports during the
 discipline, also taught by Prof. Michela Mulas.
 
