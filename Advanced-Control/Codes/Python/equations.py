@@ -9,6 +9,7 @@ Created on Mon Apr  9 21:43:49 2018
 import numpy as np
 import control as ctrl
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 from numpy import cos, sin
 
 def nonlinear_equations(x,F):
@@ -83,6 +84,7 @@ def linear_equations(sp = 0):
                       [-m*L/alpha]])
     C = np.eye(4); D = np.zeros((4,1))
     return ctrl.ss(A, B, C, D)
+
 def ODEeuler(f, xo, to = 0, tf = 10, 
              step = 0.01, inp = 'Free',
              method = 'Euler'):
@@ -135,3 +137,44 @@ def ODEeuler(f, xo, to = 0, tf = 10,
             x[i+1,2] = -np.pi/2 
         """
     return (T,x)
+
+def drawCartPend(state, m = 0.356, M = 4.8,
+                 L = 2, i = 0):
+    """
+        This function is responsable to
+        generate figures with the dynamic
+        behavior of the Cart pend. It re-
+        ceives as arguments,
+            - state: the present state of the
+            system,
+            - m: the pendulum's mass
+            - M: the cart's mass
+            - L: the pole's length
+    """
+    # Relevant state
+    x  = state[0]
+    th = state[2]
+    
+    # Dimensions
+    W  = np.sqrt(M/5)     # Cart width
+    H  = 0.5*np.sqrt(M/5) # Cart heigth
+    mr = 0.4*np.sqrt(m/5) # pendulum radius
+    
+    # Position
+    y = H/2             # Cart's vertical position
+    
+    px = x - L*np.sin(th)
+    py = y + L*np.cos(th)
+    
+    # Cart drawing
+    figure = plt.figure(figsize=(8,8))
+    ax = figure.add_subplot(111, aspect = 'equal')
+    ax.set_xlim(-4,4); ax.set_ylim(-2,4)
+    ax.axhline(color = 'k')
+    
+    ax.add_patch(patches.Rectangle((x-W/2,y-H/2), W, H,
+                                   fill = True))
+    ax.plot([x, px],[y, py], 'k-')
+    ax.add_patch(patches.Circle((px,py),radius = mr, color = 'k'))
+    figure.savefig('animation/frame{}.png'.format(i))
+    plt.close('all')
