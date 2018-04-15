@@ -10,11 +10,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from equations import *
 
-t0 = 0; tf = 50; n = 1000; y0 = [0, 0, 0, 0]
+t0 = 0; tf = 100; n = 1000; y0 = [0, 0, 0, 0]
 T, x = ODEeuler(nonlinear_equations, np.array([[0,0,0,0]]),
-                tf = 50, method = 'Midpoint', inp = 'Step')
+                tf = 50, method = 'Midpoint', inp = 'Sinusoid')
 
-fig, ax = plt.subplots(2,2,figsize=(12,12))
+fig, ax = plt.subplots(2,2,figsize=(10,10))
 
 plt.suptitle('Step response summary')
 

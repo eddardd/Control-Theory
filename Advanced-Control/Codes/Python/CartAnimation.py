@@ -16,16 +16,16 @@ m   = 0.356     # Pendulum mass
 L   = 0.560     # Pole length
 
 ## Simulation
-t0 = 0; tf = 20; n = 2000
+t0 = 0; tf = 50; n = 5000
 T, x = ODEeuler(nonlinear_equations, np.array([[0,0,0,0.1]]),
-                tf = tf, method = 'Midpoint', inp = 'Free')
+                n = n, tf = tf, method = 'Midpoint', inp = 'Free')
 
 ## Frames
-for i in range(0,n,5):
+for i in range(0,n,10):
     drawCartPend(x[i,:], m, M, 2, i)
     plt.close('all')
     
-file_names = ['animation/frame{}.png'.format(i) for i in range(0,n,5)]
+file_names = ['animation/frame{}.png'.format(i) for i in range(0,n,10)]
 images = []
 for filename in file_names:
     images.append(imageio.imread(filename))

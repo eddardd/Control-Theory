@@ -15,10 +15,16 @@ I   = 0.006;    % Pole inertia moment
 g   = 9.806;    % Gravitational acceleration
 
 %% Nonlinear system simulation
-to = 0; tF = 50; sampling = 1000;
+%to = 0; tF = 50; sampling = 1000;
 
-t = linspace(to, tF, sampling);
-[~,y] = ode23s(@nonlinear_equations, t, [0 0 0 0]);
+t = 0:0.001:30;%linspace(to, tF, sampling);
+[~,y] = ode23s(@nonlinear_equations, t, [1 0 0 0.1]);
+
+%% Draw behavior
+%y(:,3) = pi - y(:,3);
+for k=1:100:length(t)
+    drawcartpend(y(k,:),m,M,L)
+end
 
 %% Step response
 figure();

@@ -16,7 +16,7 @@ g   = 9.806;    % Gravitational acceleration
 
 %% Equations
 
-F = 1; % Step response
+F = 0; % Free response
 % Remark: you can change F to be an arbitrary input of your wish.
 
 dx = zeros(4,1);

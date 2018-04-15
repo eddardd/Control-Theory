@@ -18,20 +18,27 @@ det(A1)
 det(A2)
 det(A3)
 
-%% Convert state space to transfer function
-
+%% Equations 1.50 and 1.51
+% Values for theta = 0
 alpha = (I+m*L^2)*(M+m) - (m*L)^2;
 
-a = -(m*L^2 + I)*bx/alpha;
-b = (g*(m*L)^2)/alpha;
-c = -m*L*bth/alpha;
-d = -m*L*bx/alpha;
-e = (M+m)*m*g*L/alpha;
-f = -(M+m)*bth/alpha;
-g = (m*L^2 + I)/alpha;
-h = m*L/alpha;
+% f2 derivatives
+a = -(m*L^2 + I)*bx/alpha; % df2/dx2
+b = -(g*(m*L)^2)/alpha;    % df2/dx3
+c =  m*L*bth/alpha;        % df4/dx4
+% f4 derivatives
+d =  m*L*bx/alpha;         % df4/dx2
+e = -(M+m)*m*g*L/alpha;    % df4/dx3
+f = -(M+m)*bth/alpha;      % df4/dx4
+% input derivatives
+g = (m*L^2 + I)/alpha;     % df2/du
+h = -m*L/alpha;            % df4/du
 
 A = [0, 1, 0, 0; 0, a, b, c; 0, 0, 0, 1; 0, d, e, f];
 B = [0; (m*L^2 + I)/alpha; 0; m*L/alpha];
 
-det(s*eye(4) - A)
+denominator = det(s*eye(4) - A);
+numerator1  = B(2)*det([-1, 0, 0; 0, s, -1; -d, -e, s-f])...
+              - B(4)*det([-1, 0, 0; s-a, -b, -c; 0, s, -1]);
+numerator2  = B(2)*det([s, -1, 0; 0, 0, -1; 0, -d, s-f])...
+              - B(4)*det([s, -1, 0; 0, s-a, -c; 0, 0, -1]);

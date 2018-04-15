@@ -85,8 +85,43 @@ def linear_equations(sp = 0):
     C = np.eye(4); D = np.zeros((4,1))
     return ctrl.ss(A, B, C, D)
 
-def ODEeuler(f, xo, to = 0, tf = 10, 
-             step = 0.01, inp = 'Free',
+def time_domain_information(T,x):
+    """
+        This function receives a vector
+        with the time-domain response.
+        It calculates,
+            - the rise time, tr,
+            - the settling time, ts,
+            - the overshoot, mp,
+            - the peak time, tp
+    """
+    ## Rise time
+    p0 = 0.1*np.pi
+    p1 = 0.9*np.pi
+    
+    t0 = np.where(x < p0)[0][-1]
+    t1 = np.where(x > p1)[0][0]
+    
+    tr = T[t1] - T[t0]
+    
+    ## Overshoot
+    mp = (np.max(x)-np.pi)/np.pi
+    
+    ## Settling time
+    wn = 1.8/tr
+    xi = -np.log(mp)/np.sqrt(np.pi**2 + np.log(mp)**2)
+    
+    ts = 4.6/(wn*xi)
+    
+    ## peak time
+    ip = np.argmax(x)
+    tp = T[ip]
+    
+    return (tr, ts, mp, tp, wn, xi)
+    
+
+def ODEeuler(f, xo, *args, to = 0, tf = 10, 
+             n = 1000, inp = 'Free',
              method = 'Euler'):
     
     """
@@ -94,7 +129,7 @@ def ODEeuler(f, xo, to = 0, tf = 10,
         systems of ODEs
     """
     
-    n = int((tf - to)/step)
+    step = (tf-to)/n
     _, p = xo.shape
     
     T = np.zeros((n,));  T[0] = to
@@ -111,7 +146,7 @@ def ODEeuler(f, xo, to = 0, tf = 10,
     elif inp == 'Ramp':
         F = T
     elif inp == 'Sinusoid':
-        F = 1*np.sin(5*t)
+        F = args[0]*np.sin(args[1]*t)
     
     for i in range(n-1):
         if method == 'Euler':
