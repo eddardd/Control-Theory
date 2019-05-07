@@ -10,12 +10,6 @@ sistemas físicos usando Python, teoria do Controle e sistemas lineares.
 Those notebooks have as purpose to show how we can simulate and represent
 physical systems using Python, Control Theory and Linear Systems.
 
-## Français
-
-Ces notebooks ont comme but montrer comme nous pouvons simuler et représenter
-des systèmes physiques avec Python, la theorie du Contrôle et des Systèmes
-Lineaires.
-
 ## Lectures
 
 * 07/03/2018 - Mass Spring tutorial, (simulations + lectures notes)
