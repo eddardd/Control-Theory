@@ -32,18 +32,3 @@ subject.
 
 [3] Advanced Control, refering to my codes and reports during the
 discipline, also taught by Prof. Michela Mulas.
-
-## Français
-
-Dans cette repository, vous pouvez trouver des codes, des notes de lectures
-et des rapports sur Contrôle. Il est divisé en trois parties:
-
-[1] Introduction au Contrôle, sur mon activité comme assistant
-d'enseignment à la discipline enseigné par Prof. Michela Mulas,
-à l'Université Fédérale du Ceará.
-
-[2] Contrôle Optimal, sur mes notes d'études et mes codes sur
-le sujet.
-
-[3] Contrôle Avancé, sur mes codes et rapports pendant
-le sujet, aussi enseigné par Prof. Michela Mulas.
